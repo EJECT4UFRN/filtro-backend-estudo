@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>UFRN</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>HOME</h2>
+
+        <!-- A tag form vai possuir duas propriedades importantes:
+            1º action -> indica qual URL deve processar a requisição
+            2º method -> indica o verbo HTTP a ser utilizado. No nosso caso, o GET é o correto
+        -->
+        <form action="/pesquisa" method="GET">
+            <label for="nomeInstituicao">Pesquisa:</label>
+
+            <!-- O input abaixo possui uma propriedade importante:
+                name -> indica que nome ficará na url com o valor nele digitado
+            -->
+            <input id="nomeInstituicao" type="text" name="nomeInstituicao">
+            <input type="submit" value="Enviar">
+        </form>
+    </body>
+</html>

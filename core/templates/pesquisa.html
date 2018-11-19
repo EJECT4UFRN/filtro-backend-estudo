@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>UFRN - Pesquisa</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>Página de pesquisa</h2>
+
+        <p>Lista De cursos</p>
+
+        <ol>
+            {% for curso in cursos %}
+            <li>{{ curso.nome }}</li>
+            {% endfor %}
+        </ol>
+    </body>
+</html>
