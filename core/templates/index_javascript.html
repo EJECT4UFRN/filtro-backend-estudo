@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>UFRN</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>HOME com Javascript</h2>
+
+        <!-- A tag form vai possuir três propriedades importantes:
+            1º action -> indica qual URL deve processar a requisição
+            2º method -> indica o verbo HTTP a ser utilizado. No nosso caso, o GET é o correto
+            3° onsubmit -> Executa algum script em Javascript e realiza uma determinada ação.
+                           Neste caso, executa a função redirecionaUrl()
+        -->
+        <form action="/pesquisa" method="GET" onsubmit="redirecionaUrl(event)">
+            <label for="nomeCurso">Pesquisa:</label>
+
+            <!-- O input abaixo possui uma propriedade importante:
+                name -> indica que nome ficará na url com o valor nele digitado
+            -->
+            <input id="nomeCurso" type="text" name="nomeCurso">
+            <input type="submit" value="Enviar">
+        </form>
+
+        <script>
+        /*
+        O objetivo aqui é através do Javascript acessar o DOM, pegar o valor que foi escrito no input,
+        preparar uma nova URL e redirecionar a página
+        */
+
+        // Aqui declaramos a função. Nota-se que ela recebe um argumento chamado 'event' que parece
+        // ter surgido do nada mas ele aparece nativamente nos navegadores. 'event' é algum evento executado
+        // pelo usuário como um click numa div ou escrever no campo. Esse valor te dá o poder do evento
+        // que você estava observando acontecer e suas respectivas informações.
+        var redirecionaUrl = function(event) {
+            // Por padrão, quando um form é submetido, ele recarrega a página e não queremos que isso ocorra.
+            // Porque senão perderíamos o que foi escrito. Para evitar que isso ocorra, a linha abaixo
+            // se faz necessária. Ela impede o comportamento padrão e nos permite dar continuidade.
+            event.preventDefault();
+
+            // Aqui eu acesso o DOM para resgatar o valor que está no input
+            var valorNomeInstituicao = document.querySelector('#nomeCurso').value;
+
+            // Com o valor em mãos eu monto a nova URL em forma de string
+            var novaUrl = 'http://127.0.0.1:8000/pesquisa/curso/' + valorNomeInstituicao;
+
+            // Aviso ao Javascript qual deve ser a nova URL que ele deve trocar
+            window.location.href = novaUrl;
+        };
+        </script>
+    </body>
+</html>
